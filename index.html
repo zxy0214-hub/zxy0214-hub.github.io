@@ -17,125 +17,95 @@
         .upload-area { padding: 20px; border: 1px dashed #ddd; border-radius: 4px; margin-top: 10px; }
         #photo-display { margin-top: 20px; display: flex; gap: 15px; flex-wrap: wrap; }
         #photo-display img { width: 180px; height: 180px; object-fit: cover; border-radius: 4px; border: 1px solid #eee; }
-        #text-display { margin-top: 10px; padding: 10px; background: #f9f9f9; border-radius: 4px; color: #333; }
+        #text-display { margin-top: 10px; padding: 10px; background: #f9f9f9; border-radius: 4px; color: #333; white-space: pre-wrap; }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>zxyworld.cn - 我的个人空间</h1>
-        
-        <!-- 文字发布区域 -->
+
+        <!-- 文字发布 -->
         <div class="section">
             <h3>发布文字</h3>
             <textarea id="text-content" placeholder="输入想分享的文字..."></textarea>
             <button onclick="saveText()">保存文字</button>
             <div id="text-display"></div>
         </div>
-        
-        <!-- 照片上传区域 -->
+
+        <!-- 照片上传 -->
         <div class="section">
             <h3>上传照片</h3>
             <div class="upload-area">
                 <input type="file" id="photo-upload" accept="image/*" multiple>
-                <button onclick="uploadPhoto()">上传照片</button>
+                <button onclick="uploadPhoto()">预览照片</button>
             </div>
             <div id="photo-display"></div>
         </div>
     </div>
 
-    <!-- 引入COS SDK -->
-    <script src="https://cdn.jsdelivr.net/npm/cos-js-sdk-v5/dist/cos-js-sdk-v5.min.js"></script>
-    <script>
-        // ==================== 需要替换的参数 ====================
-        const COS_CONFIG = {
-            SecretId: '你的腾讯云COS SecretId', // 后续教你获取
-            SecretKey: '你的腾讯云COS SecretKey', // 后续教你获取
-            Region: 'ap-singapore', // 桶地域（新加坡：ap-singapore，香港：ap-hongkong）
-            Bucket: '你的COS桶名' // 后续教你创建
+<script>
+// 保存文字
+function saveText() {
+    const text = document.getElementById('text-content').value.trim();
+    if (!text) {
+        alert('请输入内容！');
+        return;
+    }
+    localStorage.setItem('myText', text);
+    document.getElementById('text-display').innerText = text;
+    alert('保存成功！（本地存储，刷新不丢）');
+}
+
+// 预览照片（存在本地，base64）
+function uploadPhoto() {
+    const input = document.getElementById('photo-upload');
+    if (!input.files.length) {
+        alert('请选择图片');
+        return;
+    }
+
+    const photoContainer = document.getElementById('photo-display');
+
+    for (let file of input.files) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            const img = document.createElement('img');
+            img.src = e.target.result;
+            photoContainer.appendChild(img);
+
+            // 保存到本地列表
+            savePhotoToLocal(e.target.result);
         };
-        // =======================================================
+        reader.readAsDataURL(file);
+    }
+    input.value = '';
+}
 
-        // 初始化COS实例
-        const cos = new COS({
-            SecretId: COS_CONFIG.SecretId,
-            SecretKey: COS_CONFIG.SecretKey,
-            Region: COS_CONFIG.Region
-        });
+// 本地存储图片列表
+function savePhotoToLocal(base64) {
+    let photos = JSON.parse(localStorage.getItem('myPhotos') || '[]');
+    photos.push(base64);
+    localStorage.setItem('myPhotos', JSON.stringify(photos));
+}
 
-        // 保存文字到COS（同时存本地，方便刷新后查看）
-        function saveText() {
-            const text = document.getElementById('text-content').value.trim();
-            if (!text) {
-                alert('请输入要发布的文字！');
-                return;
-            }
+// 页面加载时恢复
+window.onload = function () {
+    // 恢复文字
+    const text = localStorage.getItem('myText');
+    if (text) {
+        document.getElementById('text-content').value = text;
+        document.getElementById('text-display').innerText = text;
+    }
 
-            // 1. 存到本地（刷新页面不丢失）
-            localStorage.setItem('myPersonalText', text);
-            document.getElementById('text-display').innerText = text;
-
-            // 2. 上传到COS（永久保存）
-            cos.putObject({
-                Bucket: COS_CONFIG.Bucket,
-                Region: COS_CONFIG.Region,
-                Key: 'text/my_note.txt', // 存储路径，可自定义
-                Body: text,
-                ContentType: 'text/plain; charset=utf-8'
-            }, (err, data) => {
-                if (err) {
-                    alert('文字上传到云端失败：' + err.message);
-                } else {
-                    alert('文字保存成功（本地+云端）！');
-                }
-            });
-        }
-
-        // 上传照片到COS
-        function uploadPhoto() {
-            const fileInput = document.getElementById('photo-upload');
-            const files = fileInput.files;
-            if (!files.length) {
-                alert('请选择要上传的照片！');
-                return;
-            }
-
-            // 批量上传照片
-            for (let i = 0; i < files.length; i++) {
-                const file = files[i];
-                // 生成唯一文件名（避免重名）
-                const fileName = `photos/${Date.now()}_${i}_${file.name.replace(/\s+/g, '_')}`;
-
-                cos.putObject({
-                    Bucket: COS_CONFIG.Bucket,
-                    Region: COS_CONFIG.Region,
-                    Key: fileName,
-                    Body: file,
-                    ContentType: file.type
-                }, (err, data) => {
-                    if (err) {
-                        alert(`照片${file.name}上传失败：` + err.message);
-                    } else {
-                        // 上传成功后展示照片
-                        const photoUrl = `https://${COS_CONFIG.Bucket}.cos.${COS_CONFIG.Region}.myqcloud.com/${fileName}`;
-                        const img = document.createElement('img');
-                        img.src = photoUrl;
-                        img.alt = file.name;
-                        document.getElementById('photo-display').appendChild(img);
-                        // 清空文件选择框
-                        fileInput.value = '';
-                    }
-                });
-            }
-        }
-
-        // 页面加载时，读取本地保存的文字
-        window.onload = function() {
-            const savedText = localStorage.getItem('myPersonalText');
-            if (savedText) {
-                document.getElementById('text-content').value = savedText;
-                document.getElementById('text-display').innerText = savedText;
-            }
-        };
-    </script>
+    // 恢复图片
+    const photos = JSON.parse(localStorage.getItem('myPhotos') || '[]');
+    const photoContainer = document.getElementById('photo-display');
+    photos.forEach(p => {
+        const img = document.createElement('img');
+        img.src = p;
+        photoContainer.appendChild(img);
+    });
+};
+</script>
 </body>
 </html>
