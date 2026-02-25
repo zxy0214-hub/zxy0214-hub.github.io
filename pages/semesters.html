@@ -72,13 +72,22 @@
             transform: translateY(-5px);
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
         }
+
+        /* 图片容器样式 - 保证图片比例和显示效果 */
+        .img-container {
+            background-size: contain; /* 改为contain保证图片完整显示 */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: inherit; /* 继承背景色，避免图片周围空白 */
+            cursor: pointer; /* 添加鼠标指针样式 */
+        }
     </style>
 </head>
 <body class="antialiased bg-background text-text">
     <!-- 导航栏 -->
     <header class="fixed top-0 left-0 right-0 z-50 bg-background bg-opacity-90 backdrop-blur-sm border-b border-primary border-opacity-20">
         <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="../index.html" class="text-2xl font-light tracking-wider">My Little World
+            <a href="../index.html" class="text-2xl font-light tracking-wider">My Little World</a>
             
             <div class="hidden md:flex space-x-8">
                 <a href="../index.html" class="hover:opacity-70 transition-opacity">首页</a>
@@ -105,64 +114,92 @@
     <section class="pt-32 pb-20 bg-background">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl md:text-4xl font-light mb-16 text-center" data-aos="fade-up">
-                学期<span class="font-normal">记录</span>
+                <span class="font-normal">学期记录</span>
             </h2>
             
             <!-- 学期卡片 -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
                 <!-- 大一上学期 -->
                 <div class="card-hover rounded-lg overflow-hidden shadow-md cursor-pointer" data-aos="fade-up" data-aos-delay="100">
-                    <div class="h-48 bg-primary flex items-center justify-center">
-                        <h3 class="text-3xl font-light text-white">大一<span class="font-normal">上学期</span></h3>
+                    <!-- 拉高图片容器高度到64，修改背景显示方式，添加音频播放ID -->
+                    <div id="audio-1" class="h-64 img-container bg-primary" style="background-image: url('../music.jpg');">
                     </div>
                     <div class="p-6 bg-white bg-opacity-80">
-                        <p class="text-primary mb-4">2023年9月 - 2024年1月</p>
-                        <p class="text-gray-600 line-clamp-3">初入大学的第一个学期，充满了新奇与挑战。从军训到专业课，从社团活动到新朋友，每一步都是成长的印记。</p>
-                        <a href="semester-detail.html?id=freshman-first" class="mt-4 inline-block px-4 py-2 bg-primary text-white rounded-md hover:bg-opacity-90 transition-colors">
-                            查看详情
-                        </a>
+                        <p class="text-primary mb-4 text-center">2024年9月 - 2025年1月</p>
+                        <!-- 歌词居中显示 -->
+                        <div class="text-gray-600 mb-6 text-center">
+                            <p>潺潺流水终于穿过了群山一座座，好像多年之后你依然执着</p>
+                            <p>白云是否也听过你的诉说，笑着你，笑着我</p>
+                        </div>
+                        <!-- 按钮居中显示在歌词下方 -->
+                        <div class="text-center">
+                            <a href="semester-detail.html?id=freshman-first" class="inline-block px-4 py-2 bg-primary text-white rounded-md hover:bg-opacity-90 transition-colors">
+                                看看照片
+                            </a>
+                        </div>
                     </div>
                 </div>
                 
                 <!-- 大一下学期 -->
                 <div class="card-hover rounded-lg overflow-hidden shadow-md cursor-pointer" data-aos="fade-up" data-aos-delay="200">
-                    <div class="h-48 bg-secondary flex items-center justify-center">
-                        <h3 class="text-3xl font-light text-white">大一<span class="font-normal">下学期</span></h3>
+                    <!-- 拉高图片容器高度到64，修改背景显示方式，添加音频播放ID -->
+                    <div id="audio-2" class="h-64 img-container bg-secondary" style="background-image: url('../music.jpg');">
                     </div>
                     <div class="p-6 bg-white bg-opacity-80">
-                        <p class="text-secondary mb-4">2024年2月 - 2024年6月</p>
-                        <p class="text-gray-600 line-clamp-3">适应了大学生活的节奏，开始更加深入地探索自己的兴趣爱好。参加了更多的实践活动，结识了更多志同道合的朋友。</p>
-                        <a href="semester-detail.html?id=freshman-second" class="mt-4 inline-block px-4 py-2 bg-secondary text-white rounded-md hover:bg-opacity-90 transition-colors">
-                            查看详情
-                        </a>
+                        <p class="text-secondary mb-4 text-center">2025年2月 - 2025年6月</p>
+                        <!-- 歌词居中显示 -->
+                        <div class="text-gray-600 mb-6 text-center">
+                            <p>每秒都活着，每秒都死去，每秒都问着自己</p>
+                            <p>谁不曾找寻，谁不曾怀疑，茫茫人生奔向何地</p>
+                        </div>
+                        <!-- 按钮居中显示在歌词下方 -->
+                        <div class="text-center">
+                            <a href="semester-detail.html?id=freshman-second" class="inline-block px-4 py-2 bg-secondary text-white rounded-md hover:bg-opacity-90 transition-colors">
+                                看看照片
+                            </a>
+                        </div>
                     </div>
                 </div>
                 
                 <!-- 大二上学期 -->
                 <div class="card-hover rounded-lg overflow-hidden shadow-md cursor-pointer" data-aos="fade-up" data-aos-delay="300">
-                    <div class="h-48 bg-accent flex items-center justify-center">
-                        <h3 class="text-3xl font-light text-white">大二<span class="font-normal">上学期</span></h3>
+                    <!-- 拉高图片容器高度到64，修改背景显示方式，添加音频播放ID -->
+                    <div id="audio-3" class="h-64 img-container bg-accent" style="background-image: url('../music.jpg');">
                     </div>
                     <div class="p-6 bg-white bg-opacity-80">
-                        <p class="text-accent mb-4">2024年9月 - 2025年1月</p>
-                        <p class="text-gray-600 line-clamp-3">开始接触更多专业核心课程，学习压力有所增加。同时也开始思考未来的发展方向，参加了一些实习和实践项目。</p>
-                        <a href="semester-detail.html?id=sophomore-first" class="mt-4 inline-block px-4 py-2 bg-accent text-white rounded-md hover:bg-opacity-90 transition-colors">
-                            查看详情
-                        </a>
+                        <p class="text-accent mb-4 text-center">2025年9月 - 2026年1月</p>
+                        <!-- 歌词居中显示 -->
+                        <div class="text-gray-600 mb-6 text-center">
+                            <p>快快抹干眼泪，看昙花多美</p>
+                            <p>路过人间，无非一瞬间</p>
+                        </div>
+                        <!-- 按钮居中显示在歌词下方 -->
+                        <div class="text-center">
+                            <a href="semester-detail.html?id=sophomore-first" class="inline-block px-4 py-2 bg-accent text-white rounded-md hover:bg-opacity-90 transition-colors">
+                                看看照片
+                            </a>
+                        </div>
                     </div>
                 </div>
                 
                 <!-- 大二下学期 -->
                 <div class="card-hover rounded-lg overflow-hidden shadow-md cursor-pointer" data-aos="fade-up" data-aos-delay="400">
-                    <div class="h-48 bg-primary flex items-center justify-center">
-                        <h3 class="text-3xl font-light text-white">大二<span class="font-normal">下学期</span></h3>
+                    <!-- 拉高图片容器高度到64，修改背景显示方式，添加音频播放ID -->
+                    <div id="audio-4" class="h-64 img-container bg-primary" style="background-image: url('../music.jpg');">
                     </div>
                     <div class="p-6 bg-white bg-opacity-80">
-                        <p class="text-primary mb-4">2025年2月 - 2025年6月</p>
-                        <p class="text-gray-600 line-clamp-3">专业学习更加深入，开始准备各类专业证书考试。同时也更加注重实践能力的培养，参加了更多的项目实践和社会实践。</p>
-                        <a href="semester-detail.html?id=sophomore-second" class="mt-4 inline-block px-4 py-2 bg-primary text-white rounded-md hover:bg-opacity-90 transition-colors">
-                            查看详情
-                        </a>
+                        <p class="text-primary mb-4 text-center">2026年2月 - 2026年6月</p>
+                        <!-- 歌词居中显示 -->
+                        <div class="text-gray-600 mb-6 text-center">
+                            <p>我的未来式，由我做主</p>
+                            <p>每一个动作，我都完整投入</p>
+                        </div>
+                        <!-- 按钮居中显示在歌词下方 -->
+                        <div class="text-center">
+                            <a href="semester-detail.html?id=sophomore-second" class="inline-block px-4 py-2 bg-primary text-white rounded-md hover:bg-opacity-90 transition-colors">
+                                看看照片
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -182,6 +219,26 @@
     </footer>
 
     <script>
+        // 初始化音频对象
+        let audioPlayers = {
+            1: new Audio('../bgm1.mp3'),
+            2: new Audio('../bgm2.mp3'),
+            3: new Audio('../bgm3.mp3'),
+            4: new Audio('../bgm4.mp3')
+        };
+        
+        // 记录当前正在播放的音频ID
+        let currentPlayingAudioId = null;
+        
+        // 暂停所有音频的函数
+        function pauseAllAudios() {
+            Object.values(audioPlayers).forEach(audio => {
+                audio.pause();
+                audio.currentTime = 0; // 重置播放位置到开头
+            });
+            currentPlayingAudioId = null;
+        }
+        
         // 初始化AOS动画库
         document.addEventListener('DOMContentLoaded', function() {
             AOS.init({
@@ -192,7 +249,42 @@
             
             // 初始化移动端菜单
             initMobileMenu();
+            
+            // 为每个图片容器添加点击事件
+            document.getElementById('audio-1').addEventListener('click', function() {
+                toggleAudio(1);
+            });
+            
+            document.getElementById('audio-2').addEventListener('click', function() {
+                toggleAudio(2);
+            });
+            
+            document.getElementById('audio-3').addEventListener('click', function() {
+                toggleAudio(3);
+            });
+            
+            document.getElementById('audio-4').addEventListener('click', function() {
+                toggleAudio(4);
+            });
         });
+        
+        // 音频播放/暂停切换函数
+        function toggleAudio(audioId) {
+            const audio = audioPlayers[audioId];
+            
+            // 如果点击的是当前正在播放的音频
+            if (currentPlayingAudioId === audioId) {
+                audio.pause();
+                currentPlayingAudioId = null;
+            } else {
+                // 暂停其他音频
+                pauseAllAudios();
+                // 播放当前音频（自动从开头播放）
+                audio.currentTime = 0;
+                audio.play().catch(err => console.log('播放失败:', err));
+                currentPlayingAudioId = audioId;
+            }
+        }
         
         // 移动端菜单
         function initMobileMenu() {

@@ -105,7 +105,7 @@
     <!-- 导航栏 -->
     <header class="fixed top-0 left-0 right-0 z-50 bg-background bg-opacity-90 backdrop-blur-sm border-b border-primary border-opacity-20">
         <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="../index.html" class="text-2xl font-light tracking-wider">My Little World
+            <a href="../index.html" class="text-2xl font-light tracking-wider">My Little World</a>
             <div class="hidden md:flex space-x-8">
                 <a href="../index.html" class="hover:opacity-70 transition-opacity">首页</a>
                 <a href="semesters.html" class="hover:opacity-70 transition-opacity">学期记录</a>
@@ -197,53 +197,53 @@
             const urlParams = new URLSearchParams(window.location.search);
             const semesterId = urlParams.get('id');
             
-            // 学期数据
+            // 学期数据 - 修正文件夹名称拼写错误：smester → semester
             const semesterData = {
                 'freshman-first': {
                     title: '大一上学期',
-                    subtitle: '2023年9月 - 2024年1月',
+                    subtitle: '2024年9月 - 2025年1月',
                     color: 'primary',
                     textColor: 'text-primary',
                     description: '初入大学的第一个学期，充满了新奇与挑战。从军训到专业课，从社团活动到新朋友，每一步都是成长的印记。',
                     entries: [
                         {
-                            title: '军训生活',
-                            date: '2023年9月10日',
-                            content: '为期两周的军训生活结束了，虽然很累，但也收获了很多。认识了新同学，学会了坚持和团队合作。',
-                            image: 'https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/864cc142d3394d6c9b6c1aba049e1227~tplv-a9rns2rl98-image.image?lk3s=8e244e95&rcl=20260224224412B123060FFAC1D5746808&rrcfp=f06b921b&x-expires=1774536272&x-signature=eNggePIKhsy%2FKNSnwResQP%2BM0Ok%3D'
+                            title: '开学典礼',
+                            date: '2024年9月',
+                            content: '穿插在军训期间的开学典礼，大家手里举着旗子一起唱歌',
+                            image: '../picture-semester1/pic1-1.jpg'  // 修正拼写：smester → semester
                         },
                         {
-                            title: '第一次班会',
-                            date: '2023年9月25日',
-                            content: '第一次班会，班主任介绍了专业情况和大学学习方法。同学们也做了自我介绍，大家来自五湖四海，有着不同的背景和兴趣。',
-                            image: 'https://p11-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/650fe07b95854374816c043757817aa1~tplv-a9rns2rl98-image.image?lk3s=8e244e95&rcl=20260224224412B123060FFAC1D5746808&rrcfp=f06b921b&x-expires=1774536270&x-signature=DRivCs6ghl9T8FUsyFmPXF7mQ3Y%3D'
+                            title: '金秋文化节',
+                            date: '2024年11月',
+                            content: '最感兴趣的金秋系列活动，没有之一。和来自各个国家各个民族的同学chatting',
+                            image: '../picture-semester1/pic1-2.jpg'  // 修正拼写：smester → semester
                         },
                         {
-                            title: '加入社团',
-                            date: '2023年10月15日',
-                            content: '今天加入了摄影社团，认识了很多志同道合的朋友。第一次参加了社团活动，学习了一些基础的摄影技巧。',
-                            image: 'https://p11-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/c924a758905241f9b85d967930e045d5~tplv-a9rns2rl98-image.image?lk3s=8e244e95&rcl=20260224224412B123060FFAC1D5746808&rrcfp=f06b921b&x-expires=1774536271&x-signature=ZB7pRYtx5vQ2Vll6%2FCOqLQLAULU%3D'
+                            title: '爬珞珈山',
+                            date: '2024年11月',
+                            content: '和同学第一次爬珞珈山，正值太阳落山之际',
+                            image: '../picture-semester1/pic1-3.jpg'  // 修正拼写：smester → semester
                         }
                     ]
                 },
                 'freshman-second': {
                     title: '大一下学期',
-                    subtitle: '2024年2月 - 2024年6月',
+                    subtitle: '2025年2月 - 2025年6月',
                     color: 'secondary',
                     textColor: 'text-secondary',
                     description: '适应了大学生活的节奏，开始更加深入地探索自己的兴趣爱好。参加了更多的实践活动，结识了更多志同道合的朋友。',
                     entries: [
                         {
-                            title: '春季开学',
-                            date: '2024年2月20日',
-                            content: '新学期开始了，课程比上学期更加紧张。这学期有很多专业课，需要更加努力学习。',
-                            image: 'https://p11-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/c924a758905241f9b85d967930e045d5~tplv-a9rns2rl98-image.image?lk3s=8e244e95&rcl=20260224224412B123060FFAC1D5746808&rrcfp=f06b921b&x-expires=1774536271&x-signature=ZB7pRYtx5vQ2Vll6%2FCOqLQLAULU%3D'
+                            title: '东湖夜骑',
+                            date: '2025年4月',
+                            content: '第一次东湖骑行。我们刚开始骑的时候正是蓝调时刻，可惜低估了东湖的辽阔，才骑不到六分之一，天就完全黑了，只能返程。',
+                            image: '../picture-semester2/pic2-1.jpg'  // 修正拼写：smester → semester
                         },
                         {
-                            title: '校园运动会',
-                            date: '2024年4月10日',
-                            content: '参加了校园运动会，报名了100米短跑和4x100米接力赛。虽然没有取得好名次，但享受了运动的乐趣。',
-                            image: 'https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/864cc142d3394d6c9b6c1aba049e1227~tplv-a9rns2rl98-image.image?lk3s=8e244e95&rcl=20260224224412B123060FFAC1D5746808&rrcfp=f06b921b&x-expires=1774536272&x-signature=eNggePIKhsy%2FKNSnwResQP%2BM0Ok%3D'
+                            title: '樱花季',
+                            date: '2025年3月',
+                            content: '第一次见证樱花季，3月底樱花大道的纯白樱花让人美到失语T-T，到处都是人人人人人...',
+                            image: '../picture-semester2/pic2-2.jpg'  // 修正拼写：smester → semester
                         }
                     ]
                 },
@@ -255,16 +255,16 @@
                     description: '开始接触更多专业核心课程，学习压力有所增加。同时也开始思考未来的发展方向，参加了一些实习和实践项目。',
                     entries: [
                         {
-                            title: '专业实习',
-                            date: '2024年10月8日',
-                            content: '开始了为期一个月的专业实习，在一家科技公司担任前端开发实习生。这是第一次接触实际的项目开发，学到了很多课堂上学不到的知识。',
-                            image: 'https://p11-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/650fe07b95854374816c043757817aa1~tplv-a9rns2rl98-image.image?lk3s=8e244e95&rcl=20260224224412B123060FFAC1D5746808&rrcfp=f06b921b&x-expires=1774536270&x-signature=DRivCs6ghl9T8FUsyFmPXF7mQ3Y%3D'
+                            title: 'mini马拉松',
+                            date: '2025年11月',
+                            content: '弥补了大一没有跑mini马拉松的遗憾，跑步体验非常棒，还收获了一块奖牌',
+                            image: '../picture-semester3/pic3-1.jpg'  // 修正拼写：smester → semester
                         },
                         {
-                            title: '期中考试',
-                            date: '2024年11月15日',
-                            content: '期中考试结束了，成绩还算满意。这学期的课程难度明显增加，需要更加努力学习。',
-                            image: 'https://p26-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/dce155a00bd749c69917036b1a4b54df~tplv-a9rns2rl98-image.image?lk3s=8e244e95&rcl=20260224224412B123060FFAC1D5746808&rrcfp=f06b921b&x-expires=1774536269&x-signature=ExV34yRBUEqGyX0guS4z2JQE8DU%3D'
+                            title: '万圣节',
+                            date: '2025年10月',
+                            content: '万圣节黎黄陂路游街，大家都超级有趣，俺一直在合照',
+                            image: '../picture-semester3/pic3-2.jpg'  // 修正拼写：smester → semester
                         }
                     ]
                 },
@@ -279,13 +279,13 @@
                             title: '证书考试',
                             date: '2025年3月20日',
                             content: '参加了前端开发工程师证书考试，准备了很久，希望能够顺利通过。',
-                            image: 'https://p11-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/650fe07b95854374816c043757817aa1~tplv-a9rns2rl98-image.image?lk3s=8e244e95&rcl=20260224224412B123060FFAC1D5746808&rrcfp=f06b921b&x-expires=1774536270&x-signature=DRivCs6ghl9T8FUsyFmPXF7mQ3Y%3D'
+                            image: '../picture-semester4/pic4-1.jpg'  // 修正拼写：smester → semester
                         },
                         {
                             title: '毕业实习准备',
                             date: '2025年5月15日',
                             content: '开始准备毕业实习的申请材料，目标是进入一家知名的互联网公司。这是大学最后一个学期了，要好好珍惜剩下的时光。',
-                            image: 'https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/864cc142d3394d6c9b6c1aba049e1227~tplv-a9rns2rl98-image.image?lk3s=8e244e95&rcl=20260224224412B123060FFAC1D5746808&rrcfp=f06b921b&x-expires=1774536272&x-signature=eNggePIKhsy%2FKNSnwResQP%2BM0Ok%3D'
+                            image: '../picture-semester4/pic4-2.jpg'  // 修正拼写：smester → semester
                         }
                     ]
                 }
@@ -307,21 +307,9 @@
             
             const data = semesterData[semesterId];
             
-            // 生成学期详情内容
+            // 生成学期详情内容（只保留学期记录列表）
             let html = `
-                <div class="mb-12">
-                    <div class="h-64 bg-${data.color} flex items-center justify-center mb-8">
-                        <div class="text-center">
-                            <h2 class="text-4xl md:text-5xl font-light text-white mb-2">${data.title}</h2>
-                            <p class="text-white text-opacity-90">${data.subtitle}</p>
-                        </div>
-                    </div>
-                    <div class="max-w-3xl mx-auto">
-                        <p class="text-lg ${data.textColor} mb-8">${data.description}</p>
-                    </div>
-                </div>
-                
-                <h3 class="text-2xl font-light mb-8 ${data.textColor}">学期记录</h3>
+                <h3 class="text-2xl font-light mb-8 ${data.textColor}">${data.title} (${data.subtitle})</h3>
                 
                 <div class="masonry-grid">
             `;
